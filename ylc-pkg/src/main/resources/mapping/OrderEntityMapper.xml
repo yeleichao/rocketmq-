@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ylc.order.entity.OrderEntityMapper">
+  <resultMap id="BaseResultMap" type="com.ylc.order.entity.OrderEntity">
+    <id column="order_id" jdbcType="VARCHAR" property="order_id" />
+    <result column="order_type" jdbcType="VARCHAR" property="order_type" />
+    <result column="city_id" jdbcType="VARCHAR" property="city_id" />
+    <result column="platform_id" jdbcType="VARCHAR" property="platform_id" />
+    <result column="user_id" jdbcType="VARCHAR" property="user_id" />
+    <result column="supplier_id" jdbcType="VARCHAR" property="supplier_id" />
+    <result column="goods_id" jdbcType="VARCHAR" property="goods_id" />
+    <result column="order_status" jdbcType="VARCHAR" property="order_status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="VARCHAR" property="create_by" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_by" jdbcType="VARCHAR" property="update_by" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_id, order_type, city_id, platform_id, user_id, supplier_id, goods_id, order_status, 
+    remark, create_by, create_time, update_by, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_order
+    where order_id = #{order_id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_order
+    where order_id = #{order_id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ylc.order.entity.OrderEntity">
+    insert into t_order (order_id, order_type, city_id, 
+      platform_id, user_id, supplier_id, 
+      goods_id, order_status, remark, 
+      create_by, create_time, update_by, 
+      update_time)
+    values (#{order_id,jdbcType=VARCHAR}, #{order_type,jdbcType=VARCHAR}, #{city_id,jdbcType=VARCHAR}, 
+      #{platform_id,jdbcType=VARCHAR}, #{user_id,jdbcType=VARCHAR}, #{supplier_id,jdbcType=VARCHAR}, 
+      #{goods_id,jdbcType=VARCHAR}, #{order_status,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{create_by,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, #{update_by,jdbcType=VARCHAR}, 
+      #{update_time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ylc.order.entity.OrderEntity">
+    insert into t_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="order_id != null">
+        order_id,
+      </if>
+      <if test="order_type != null">
+        order_type,
+      </if>
+      <if test="city_id != null">
+        city_id,
+      </if>
+      <if test="platform_id != null">
+        platform_id,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+      <if test="supplier_id != null">
+        supplier_id,
+      </if>
+      <if test="goods_id != null">
+        goods_id,
+      </if>
+      <if test="order_status != null">
+        order_status,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="create_by != null">
+        create_by,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_by != null">
+        update_by,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="order_id != null">
+        #{order_id,jdbcType=VARCHAR},
+      </if>
+      <if test="order_type != null">
+        #{order_type,jdbcType=VARCHAR},
+      </if>
+      <if test="city_id != null">
+        #{city_id,jdbcType=VARCHAR},
+      </if>
+      <if test="platform_id != null">
+        #{platform_id,jdbcType=VARCHAR},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=VARCHAR},
+      </if>
+      <if test="supplier_id != null">
+        #{supplier_id,jdbcType=VARCHAR},
+      </if>
+      <if test="goods_id != null">
+        #{goods_id,jdbcType=VARCHAR},
+      </if>
+      <if test="order_status != null">
+        #{order_status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="create_by != null">
+        #{create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_by != null">
+        #{update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ylc.order.entity.OrderEntity">
+    update t_order
+    <set>
+      <if test="order_type != null">
+        order_type = #{order_type,jdbcType=VARCHAR},
+      </if>
+      <if test="city_id != null">
+        city_id = #{city_id,jdbcType=VARCHAR},
+      </if>
+      <if test="platform_id != null">
+        platform_id = #{platform_id,jdbcType=VARCHAR},
+      </if>
+      <if test="user_id != null">
+        user_id = #{user_id,jdbcType=VARCHAR},
+      </if>
+      <if test="supplier_id != null">
+        supplier_id = #{supplier_id,jdbcType=VARCHAR},
+      </if>
+      <if test="goods_id != null">
+        goods_id = #{goods_id,jdbcType=VARCHAR},
+      </if>
+      <if test="order_status != null">
+        order_status = #{order_status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="create_by != null">
+        create_by = #{create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_by != null">
+        update_by = #{update_by,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_id = #{order_id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ylc.order.entity.OrderEntity">
+    update t_order
+    set order_type = #{order_type,jdbcType=VARCHAR},
+      city_id = #{city_id,jdbcType=VARCHAR},
+      platform_id = #{platform_id,jdbcType=VARCHAR},
+      user_id = #{user_id,jdbcType=VARCHAR},
+      supplier_id = #{supplier_id,jdbcType=VARCHAR},
+      goods_id = #{goods_id,jdbcType=VARCHAR},
+      order_status = #{order_status,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_by = #{create_by,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_by = #{update_by,jdbcType=VARCHAR},
+      update_time = #{update_time,jdbcType=TIMESTAMP}
+    where order_id = #{order_id,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateOrderStatus" >
+    update t_order
+    set  order_status = #{orderStatus,jdbcType=VARCHAR},
+    update_by = #{updateBy,jdbcType=VARCHAR}
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </update>
+</mapper>
